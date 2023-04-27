@@ -1,13 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://Mliebenberg-dev:plvpHHKfPr5XhslX@mliebenberg.3jbikn6.mongodb.net/Cars_FullStack?retryWrites=true&w=majority&collection=cars', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error(err));
 
